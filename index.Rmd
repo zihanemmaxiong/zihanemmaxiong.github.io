@@ -10,9 +10,11 @@ output:
 
 ![](images/me.jpg){width=250px style="border-radius:50%; display:block; margin:auto;"}
 
-你好!我叫小狗. 我最爱的事情是吃老公的大jj!
+Hi, I'm **Zihan Xiong** 👋  
+I'm a second-year Master of Public Health student in Epidemiology at **Columbia University Mailman School of Public Health**.  
 
+My research interests center on **electronic health record (EHR)–based analytics**, **real-world evidence (RWE)**, and the application of **AI and conversational models** to improve early cancer detection and clinical decision-making.  
+Currently, my thesis focuses on developing and evaluating an EHR-based alert system to enhance **genetic testing uptake among breast cancer patients**, bridging population health and precision medicine.  
 
-
-这是我老公👇
-![](images/laogong.jpg){width=250px style="border-radius:50%; display:block; margin:auto;"}
+I'm passionate about leveraging data-driven methods to make healthcare more equitable, efficient, and personalized.  
+Feel free to explore my work or connect with me through GitHub or LinkedIn!
