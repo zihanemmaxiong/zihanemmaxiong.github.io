@@ -1,0 +1,20 @@
+name: "Zihan Xiong"
+navbar:
+  title: "Zihan Xiong"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Resume"
+      href: resume.html
+  right:
+    - icon: fa-github
+      href: "https://github.com/zihanemmaxiong"
+    - icon: fa-envelope
+      href: "mailto:zihanxiong1012@outlook.com"
+    - icon: fa-linkedin
+      href: "https://www.linkedin.com/in/zihan-xiong-447758263/"
+output_dir: "docs"
+output:
+  html_document:
+    theme: cerulean
+    toc: false

@@ -1,0 +1,21 @@
+---
+title: "Academic and Professsional Experience"
+output: html_document
+---
+
+## Education
+- **Columbia University Mailman School of Public Health**, M.P.H. in Epidemiology (2024–2026)
+- **University of Toronto**, B.Sc. in Physiology & Immunology (2020–2024)
+
+## Research Experience
+- Research Assistant, Herbert Irving Comprehensive Cancer Center, Sept 2025-Present
+- Research Assistant, Memorial Sloan Kettering Cancer Center, June 2025-Present
+- Student Researcher, Columbia University, June 2025-Present
+- Strategy Consulting Intern, IQVIA, May 2024-August 2024
+
+## Skills
+R | SAS | SQL | LaTeX | REDCap | Epic EHR | Microsoft Office
+
+## Contact
+📧 Email: [zihanxiong1012@outlook.com](mailto:zihanxiong1012@outlook.com)  
+🌐 GitHub: [github.com/zihanemmaxiong](https://github.com/zihanemmaxiong)
