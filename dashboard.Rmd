@@ -1,0 +1,90 @@
+---
+title: "Instacart Shopping Trends Dashboard"
+output:
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(plotly)
+library(p8105.datasets)
+library(flexdashboard)
+```
+
+# Problem 2
+
+```{r}
+data("instacart")
+instacart_small <- instacart |> sample_n(10000)
+glimpse(instacart_small)
+```
+## Introduction
+
+This dashboard explores when and what customers purchase on the Instacart platform, focusing on product preferences, ordering time patterns, and reordering behaviors.
+
+```{r}
+instacart_small |>
+  count(aisle,sort = TRUE) |>
+  top_n(10,n) |>
+  mutate(aisle=fct_reorder(aisle,n)) |>
+  plot_ly(
+    x=~n,
+    y=~aisle,
+    type="bar",
+    orientation="h",
+    color = ~aisle,
+    colors = "viridis",
+    showlegend=FALSE
+  ) |>
+  layout(
+    title="Top 10 Most Purchased Product Aisles",
+    xaxis=list(title="Number of Orders"),
+    yaxis=list(title="")
+  )
+
+  
+    
+```
+
+```{r}
+instacart_small |>
+  plot_ly(
+    x=~department,
+    y=~add_to_cart_order,
+    type = "box",
+    color = ~department,
+    colors ="viridis"
+  ) |>
+layout(
+title = "Distribution of Cart Position by Department",
+xaxis = list(title = "Department"),
+yaxis = list(title = "Add-to-Cart Order")
+)
+  
+```
+```{r}
+instacart_small |>
+  group_by(order_dow, order_hour_of_day) |>
+  summarise(num_orders = n(), .groups = "drop") |>
+  mutate(
+    order_dow = factor(order_dow,
+                       levels = 0:6,
+                       labels = c("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"))
+  ) |>
+  plot_ly(
+    x = ~order_hour_of_day,
+    y = ~num_orders,
+    color = ~order_dow,
+    colors = "viridis",
+    type = "scatter",
+    mode = "lines+markers"
+  ) |>
+  layout(
+    title = "Order Frequency by Hour and Day of Week",
+    xaxis = list(title = "Hour of Day"),
+    yaxis = list(title = "Number of Orders")
+  )
+```
+
