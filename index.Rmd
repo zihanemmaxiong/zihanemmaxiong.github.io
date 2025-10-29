@@ -1,0 +1,18 @@
+---
+title: "Zihan Xiong's Personal Website"
+output:
+  html_document:
+    theme: cerulean
+    toc: false
+---
+
+# Welcome!
+
+![](images/me.jpg){width=250px style="border-radius:50%; display:block; margin:auto;"}
+
+你好!我叫小狗. 我最爱的事情是吃老公的大jj!
+
+
+
+这是我老公👇
+![](images/laogong.jpg){width=250px style="border-radius:50%; display:block; margin:auto;"}
