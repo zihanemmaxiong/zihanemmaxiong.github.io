@@ -17,15 +17,15 @@ library(flexdashboard)
 
 ```{r}
 data("instacart")
-instacart_small <- instacart |> sample_n(10000)
-glimpse(instacart_small)
+instacart_s <- instacart |> sample_n(20000)
+glimpse(instacart_s)
 ```
 ## Introduction
 
 This dashboard explores when and what customers purchase on the Instacart platform, focusing on product preferences, ordering time patterns, and reordering behaviors.
 
 ```{r}
-instacart_small |>
+instacart_s |>
   count(aisle,sort = TRUE) |>
   top_n(10,n) |>
   mutate(aisle=fct_reorder(aisle,n)) |>
@@ -40,16 +40,41 @@ instacart_small |>
   ) |>
   layout(
     title="Top 10 Most Purchased Product Aisles",
-    xaxis=list(title="Number of Orders"),
+    xaxis=list(title="Orders Numbers"),
     yaxis=list(title="")
   )
 
   
     
 ```
+```{r}
+instacart_s |>
+  group_by(order_dow, order_hour_of_day) |>
+  summarise(num_orders = n(), .groups = "drop") |>
+  mutate(
+    order_dow = factor(order_dow,
+                       levels = 0:6,
+                       labels = c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"))
+  ) |>
+  plot_ly(
+    x = ~order_hour_of_day,
+    y = ~num_orders,
+    color = ~order_dow,
+    colors = "viridis",
+    type = "scatter",
+    mode = "lines+markers"
+  ) |>
+  layout(
+    title = "Order Frequency Hour x Day of Week",
+    xaxis = list(title = "Hour of Day"),
+    yaxis = list(title = "Number of Orders")
+  )
+```
+
+
 
 ```{r}
-instacart_small |>
+instacart_s |>
   plot_ly(
     x=~department,
     y=~add_to_cart_order,
@@ -64,27 +89,3 @@ yaxis = list(title = "Add-to-Cart Order")
 )
   
 ```
-```{r}
-instacart_small |>
-  group_by(order_dow, order_hour_of_day) |>
-  summarise(num_orders = n(), .groups = "drop") |>
-  mutate(
-    order_dow = factor(order_dow,
-                       levels = 0:6,
-                       labels = c("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"))
-  ) |>
-  plot_ly(
-    x = ~order_hour_of_day,
-    y = ~num_orders,
-    color = ~order_dow,
-    colors = "viridis",
-    type = "scatter",
-    mode = "lines+markers"
-  ) |>
-  layout(
-    title = "Order Frequency by Hour and Day of Week",
-    xaxis = list(title = "Hour of Day"),
-    yaxis = list(title = "Number of Orders")
-  )
-```
-
